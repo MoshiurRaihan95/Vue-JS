@@ -27,9 +27,29 @@
     
     <div v-bind:style="[baseStyleObject, dangerStyleObject]">Danger Style</div>
 
+    <!-- 
+    ******* Conditional Rendering 
+    v-if
+    v-else
+    v-else-if
+    v-show
+    -->
+    <h2 v-if="num === 0">The number is zero</h2>
+    <h2 v-else-if="num < 0">The number is negative</h2>
+    <h2 v-else-if="num > 0">The number is positive</h2>
+    <h2 v-else>Not a number</h2>
+
+    <div v-bind:style="dispalyStyle" v-if="display">
+      <h2>Hello</h2>
+      <h2>Vue</h2>
+      <h2>Js</h2>
+      <h2 v-show="showElement">Using v-show</h2> 
+      <h2 v-if="showElement">Using v-if</h2> 
+    </div>
+    
+
   </div>
 </template>
-
 <script>
 
 export default {
@@ -69,9 +89,27 @@ export default {
         color: 'darkred',
         backgroundColor: 'red',
         border: '1px solid darkred',
-        borderRadius: '5px',
+        borderRadius: '5px', 
         marginTop: '20px'
-      }
+      },
+
+      /**
+      ******* Conditional Rendering 
+      v-if
+      v-else
+      v-else-if
+      v-show
+      */
+      num: "Raihan",
+      display: true,
+      showElement: true,
+      dispalyStyle:{
+        backgroundColor: 'lightgreen',
+        border: '1px solid lightgreen',
+        borderRadius: '5px',
+        color: 'white',
+        fontSize: '20px'
+      },
     };
   },
 };
