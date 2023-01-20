@@ -46,10 +46,32 @@
       <h2 v-show="showElement">Using v-show</h2> 
       <h2 v-if="showElement">Using v-if</h2> 
     </div>
-    
+
+    <!-- 
+      ********List rendering*********
+      ####V-for Directive####
+
+      Array Of String
+      Array of Objects
+      Array of Arrays
+      Block of HTML elements
+      Object Key Value Pairs
+    -->
+    <div v-bind:style="listRendering">
+      <h1>List Rendering</h1>
+      <h2 v-for="(name, index) in names" :key="name">{{index}} {{name}}</h2>
+      <h2 v-for="name in fulNames" :key="name.first">{{name.firstName}} {{name.lastName}}</h2>
+      <div v-for="actor in actors" :key="actor.name" v-bind:style="movieList">
+        <h2>{{actor.name}}</h2>
+        <h3 v-for="movie in actor.movies" :key="movie">{{movie}}</h3>
+      </div>
+      <div v-bind:style="myInfoStyle">
+        <h2 v-for="(value, key, index) in myInfo" :key="value">{{index}}. {{key}}: {{value}}</h2>
+      </div>
+    </div>
 
   </div>
-</template>
+</template> 
 <script>
 
 export default {
@@ -109,6 +131,57 @@ export default {
         borderRadius: '5px',
         color: 'white',
         fontSize: '20px'
+      },
+
+      /* 
+      ********List rendering*********
+      ####V-for Directive####
+
+      Array Of String
+      Array of Objects
+      Array of Arrays
+      Block of HTML elements
+      Object Key Value Pairs
+      */
+      names: ['Ibrahim the....', 'Khairul the...', 'Anisur..'],
+      fulNames: [
+        {firstName: 'Ibrahim', lastName: 'Kholil'},
+        {firstName: 'Khairul', lastName: 'Islam'},
+        {firstName: 'Anisur', lastName: 'Rahman'},
+      ],
+      actors: [
+        {
+          name: 'Chistain Bale',
+          movies: ['Batman', 'The Pestige'],
+        },
+        {
+          name: 'Di Caprio',
+          movies: ['Titanic', 'Inception'],
+        },
+      ],
+      myInfo: {
+        name: 'Vishwas',
+        channel: 'Codevolution',
+        course: 'Vue 3'
+      },
+      listRendering:{
+        backgroundColor: 'salmon',
+        padding: '15px',
+        borderRadius: '5px',
+        color: 'white',
+        marginTop: '20px',
+      },
+      movieList:{
+        backgroundColor: 'lightSalmon',
+        padding: '15px',
+        borderRadius: '5px',
+        color: 'Gainsboro',
+      },
+      myInfoStyle:{
+        backgroundColor: 'DarkSlateGray',
+        borderRadius: '5px',
+        padding: '10px',
+        marginTop: '15px',
       },
     };
   },
